@@ -5,10 +5,11 @@
 ;;; "cl-pwn" goes here. Hacks and glory await!
 
 (defun remote (host port &rest args &key (external-format :utf-8))
-  (let ((sock (socket-stream (socket-connect host port :element-type '(unsigned-byte 8)))))
-    (apply 'make-instance 'tube :stream sock
-                                :external-format (make-external-format external-format)
-                                args)))
+  (let ((sock (socket-stream
+               (apply 'socket-connect host port :element-type '(unsigned-byte 8)
+                      args))))
+    (make-instance 'tube :stream sock
+                         :external-format (make-external-format external-format))))
 
 
 ;;; Timeouts
