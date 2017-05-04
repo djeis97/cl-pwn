@@ -16,6 +16,11 @@
    #:call-with-local-dispatch
    #:call-with-local
    #:with-local))
+
+(defpackage #:cl-pwn/tubes
+  (:use #:cl #:cl-pwn/timeout #:trivial-gray-streams #:flexi-streams)
+  (:export #:tube #:peek-char-no-hang #:unread-sequence #:tube-stream #:process-tube))
+
 (defpackage #:cl-pwn
-  (:use #:cl #:usocket #:trivial-gray-streams #:flexi-streams)
-  (:export :tube))
+  (:use #:cl #:usocket #:trivial-gray-streams #:flexi-streams))
+
