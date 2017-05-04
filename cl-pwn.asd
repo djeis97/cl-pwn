@@ -7,5 +7,6 @@
   :depends-on (#:alexandria #:usocket #:trivial-gray-streams #:flexi-streams #:uiop)
   :serial t
   :components ((:file "package")
+               (:file "timeout")
                (:file "cl-pwn")))
 
