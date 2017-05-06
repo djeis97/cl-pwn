@@ -19,8 +19,17 @@
 
 (defpackage #:cl-pwn/tubes
   (:use #:cl #:cl-pwn/timeout #:trivial-gray-streams #:flexi-streams)
-  (:export #:tube #:peek-char-no-hang #:unread-sequence #:tube-stream #:process-tube))
+  (:export
+   #:tube
+   #:peek-char-no-hang
+   #:unread-sequence
+   #:tube-stream
+   #:process-tube
+   #:flexi-input-tube
+   #:flexi-output-tube
+   #:flexi-io-tube
+   ))
 
 (defpackage #:cl-pwn
-  (:use #:cl #:usocket #:trivial-gray-streams #:flexi-streams))
+  (:use #:cl #:usocket #:trivial-gray-streams #:flexi-streams #:cl-pwn/tubes))
 
