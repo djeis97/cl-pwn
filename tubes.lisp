@@ -12,11 +12,9 @@
 (defclass input-tube (tube-mixin)
   ((input-stream-stack :initform nil)))
 (defmethod close :after ((st input-tube) &key abort)
-  (with-slots (input-stream-stack char-unreadable byte-unreadabl) st
+  (with-slots (input-stream-stack) st
     (dolist (ps input-stream-stack)
-      (close ps :abort abort))
-    (setf char-unreadable nil
-          byte-unreadable nil)))
+      (close ps :abort abort))))
 (defmethod clean-stream-stack ((st input-tube))
   "Removes any streams from the input stack at eof"
   (with-slots (input-stream-stack) st
