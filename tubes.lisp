@@ -266,9 +266,15 @@
 (defmethod stream-advance-to-column ((st wrapping-char-output-tube) column)
   (format (slot-value st 'wrapped-stream) "~vT" column))
 (defmethod stream-fresh-line ((st wrapping-char-output-tube))
-  
-  )
-
+  (fresh-line (slot-value st 'wrapped-stream)))
+(defmethod stream-line-column ((st wrapping-char-output-tube))
+  nil)
+(defmethod stream-start-line-p ((st wrapping-char-output-tube))
+  nil)
+(defmethod stream-write-char ((st wrapping-char-output-tube) char)
+  (write-char char (slot-value st 'wrapped-stream)))
+(defmethod stream-write-string ((st wrapping-char-output-tube) string &optional start end)
+  (write-string string (slot-value st 'wrapped-stream) :start start :end end))
 
 
 (defclass flexi-input-tube (bivalent-input-tube flexi-input-stream) ())
